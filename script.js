@@ -3,11 +3,13 @@ function startGame() {
         resetGame(i);
     }
     document.turn = "X";
+    document.name = "Saanp Dost";
     if (Math.random() < 0.5) {
         document.turn = "O";
+        document.name = "You";
     }
     document.winner = null;
-    setMessage(document.turn + " gemts to stamrt.");
+    setMessage(document.name + " - START");
     document.getElementById("div1").style.color = "#3FC80E";
     document.getElementById("div2").style.color = "#3FC80E";
     document.getElementById("div3").style.color = "#3FC80E";
@@ -25,7 +27,7 @@ function setMessage(msg) {
 
 function nextMove(box) {
     if (document.winner != null) {
-        setMessage(document.winner + " Already wom the game! Play Agaim !!");
+        setMessage(document.winner + " Already won the game!PLAY AGAIN !!");
     } else if (box.textContent == "") {
         box.textContent = document.turn;
         switchTurn();
@@ -37,16 +39,18 @@ function nextMove(box) {
 
 function switchTurn() {
     if (checkForWin(document.turn)) {
-        setMessage("Comgrats!! " + document.turn + " is Wimner.");
-        document.winner = document.turn;
+        setMessage("Congrats!! " + document.name + " - WINNER");
+        document.winner = document.name;
     } else if (checkforTie()) {
-        setMessage("It's a Tie...!! Play Agaim !!");
+        setMessage("It's a Tie...!! Play Again !!");
     } else if (document.turn == "X") {
         document.turn = "O";
-        setMessage("It's " + document.turn + "'s turn!");
+        document.name = "You";
+        setMessage("It's " + document.name + "r's TURN!");
     } else {
         document.turn = "X";
-        setMessage("It's " + document.turn + "'s turn!");
+        document.name = "Saanp Dost";
+        setMessage("It's " + document.name + "'s TURN!");
     }
 }
 
